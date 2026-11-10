@@ -1,0 +1,156 @@
+{
+ "mit_6ec9bca6b456d95182111906807e4e26c0fcd1337c218b8954443af4_tr|adjacent|orig": {
+  "input": [
+   "Sarah benim büyükannem.",
+   "Onun şakalarını gerçekten seviyorum."
+  ],
+  "ents": [
+   {
+    "lid": "L1",
+    "english_name": "Sarah",
+    "description": "Sarah is the narrator's grandmother",
+    "source_names": [
+     "Sarah"
+    ],
+    "cues": [
+     {
+      "quote": "benim büyükannem",
+      "type": "kinship_noun",
+      "gender": "F"
+     }
+    ],
+    "name_prior": 0.95,
+    "prior_src": "table",
+    "pF": 0.902443526276763
+   }
+  ],
+  "q": "{(2, 1): {'L1': 0.9999999999999567, 'none': 4.3404271117081465e-14}}",
+  "amb": "{(2, 1): 4.1690284227242083e-14}",
+  "decisions": [
+   {
+    "line": 2,
+    "slot": 1,
+    "referent": "L1",
+    "decision": "F",
+    "pF": 0.9024435262767456,
+    "conf": 0.9024435262767456,
+    "why": "confident"
+   }
+  ],
+  "instructions": "Line 2: Sarah is female; use she/her.",
+  "translate_prompt": "TASK: translate\nTranslate the numbered Turkish text into English. Output exactly one line per input line, in the form \"[n] translation\", and nothing else.\n\nINSTRUCTIONS:\nLine 2: Sarah is female; use she/her.\n\nTEXT:\n[1] Sarah benim büyükannem.\n[2] Onun şakalarını gerçekten seviyorum.",
+  "extract_meta": {
+   "cues_proposed": 1,
+   "cues_verified": 1,
+   "parse_ok": true,
+   "pseudo_removed": 0
+  }
+ },
+ "mit_6ec9bca6b456d95182111906807e4e26c0fcd1337c218b8954443af4_tr|isolated|orig": {
+  "input": [
+   "Onun şakalarını gerçekten seviyorum."
+  ],
+  "ents": [],
+  "q": "{(1, 1): {'none': 1.0}}",
+  "amb": "{(1, 1): 0.001001000279435742}",
+  "decisions": [
+   {
+    "line": 1,
+    "slot": 1,
+    "referent": "none",
+    "decision": "DEFER",
+    "pF": 0.5,
+    "conf": 0.5,
+    "why": "unobservable"
+   }
+  ],
+  "instructions": "Line 1: the text does not establish the gender of the person mentioned. Do not use he/him/his/she/her/hers (and not 'his/her' or 'he/she') for this person; use singular they/them/their, or repeat the name or role.",
+  "translate_prompt": "TASK: translate\nTranslate the numbered Turkish text into English. Output exactly one line per input line, in the form \"[n] translation\", and nothing else.\n\nINSTRUCTIONS:\nLine 1: the text does not establish the gender of the person mentioned. Do not use he/him/his/she/her/hers (and not 'his/her' or 'he/she') for this person; use singular they/them/their, or repeat the name or role.\n\nTEXT:\n[1] Onun şakalarını gerçekten seviyorum.",
+  "extract_meta": {
+   "cues_proposed": 1,
+   "cues_verified": 1,
+   "parse_ok": true,
+   "pseudo_removed": 1
+  }
+ },
+ "twc00519_tr|adjacent|orig": {
+  "input": [
+   "Oscar bir fırıncı, Diana ise bir uçuş görevlisidir.",
+   "O lezzetli ekmek yapar."
+  ],
+  "ents": [
+   {
+    "lid": "L1",
+    "english_name": "Oscar",
+    "description": "a baker",
+    "source_names": [
+     "Oscar"
+    ],
+    "cues": [],
+    "name_prior": 0.05,
+    "prior_src": "table",
+    "pF": 0.2731921777684541
+   },
+   {
+    "lid": "L2",
+    "english_name": "Diana",
+    "description": "a flight attendant",
+    "source_names": [
+     "Diana"
+    ],
+    "cues": [],
+    "name_prior": 0.95,
+    "prior_src": "table",
+    "pF": 0.7268078222315458
+   }
+  ],
+  "q": "{(2, 1): {'L1': 0.9999991477402599, 'none': 8.399562953934478e-07, 'L2': 1.2303444741961636e-08}}",
+  "amb": "{(2, 1): 8.367391746953139e-07}",
+  "decisions": [
+   {
+    "line": 2,
+    "slot": 1,
+    "referent": "L1",
+    "decision": "M",
+    "pF": 0.27319237385814726,
+    "conf": 0.7268076261418528,
+    "why": "confident"
+   }
+  ],
+  "instructions": "Line 2: Oscar is male; use he/him/his.",
+  "translate_prompt": "TASK: translate\nTranslate the numbered Turkish text into English. Output exactly one line per input line, in the form \"[n] translation\", and nothing else.\n\nINSTRUCTIONS:\nLine 2: Oscar is male; use he/him/his.\n\nTEXT:\n[1] Oscar bir fırıncı, Diana ise bir uçuş görevlisidir.\n[2] O lezzetli ekmek yapar.",
+  "extract_meta": {
+   "cues_proposed": 3,
+   "cues_verified": 3,
+   "parse_ok": true,
+   "pseudo_removed": 1
+  }
+ },
+ "twc00519_tr|isolated|orig": {
+  "input": [
+   "O lezzetli ekmek yapar."
+  ],
+  "ents": [],
+  "q": "{(1, 1): {'none': 1.0}}",
+  "amb": "{(1, 1): 4.2533890964120563e-05}",
+  "decisions": [
+   {
+    "line": 1,
+    "slot": 1,
+    "referent": "none",
+    "decision": "DEFER",
+    "pF": 0.5,
+    "conf": 0.5,
+    "why": "unobservable"
+   }
+  ],
+  "instructions": "Line 1: the text does not establish the gender of the person mentioned. Do not use he/him/his/she/her/hers (and not 'his/her' or 'he/she') for this person; use singular they/them/their, or repeat the name or role.",
+  "translate_prompt": "TASK: translate\nTranslate the numbered Turkish text into English. Output exactly one line per input line, in the form \"[n] translation\", and nothing else.\n\nINSTRUCTIONS:\nLine 1: the text does not establish the gender of the person mentioned. Do not use he/him/his/she/her/hers (and not 'his/her' or 'he/she') for this person; use singular they/them/their, or repeat the name or role.\n\nTEXT:\n[1] O lezzetli ekmek yapar.",
+  "extract_meta": {
+   "cues_proposed": 1,
+   "cues_verified": 1,
+   "parse_ok": true,
+   "pseudo_removed": 1
+  }
+ }
+}

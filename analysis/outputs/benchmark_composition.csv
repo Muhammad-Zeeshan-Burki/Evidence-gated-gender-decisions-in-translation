@@ -1,0 +1,10 @@
+dataset,subset,direction,languages,n_lang,conditions,gold,dev,test,analysed,heldout
+mittens,late_binding,x2en,es,1,adjacent isolated,determinable unrecoverable,19,21,21,19
+mittens,late_binding_same_sentence,x2en,es,1,adjacent,determinable,20,20,20,20
+mittens,nouns_then_pronouns,x2en,as bho bn fa fi id lg ln mai om tr,11,adjacent distant_8 distant_32 memory isolated,determinable unrecoverable,268,1059,887,826
+mittens,synthbio,x2en,ar de es hi id,5,adjacent,passage,41,100,0,0
+mtgeneval,contextual,en2x,ar de hi,3,adjacent distant_8 distant_32 memory isolated,determinable mixed unrecoverable,398,392,0,0
+twc,bias,x2en,az et fa fi id tr,6,adjacent,referent_ambiguous,120,120,120,118
+twc,neutrality,x2en,az et fa fi id tr,6,adjacent,referent_ambiguous,120,120,120,120
+twc,reasoning,x2en,az et fa fi id tr,6,adjacent distant_8 distant_32 memory isolated,determinable unrecoverable,809,732,612,612
+twc,reasoning_same_sentence,x2en,az et fa fi id tr,6,adjacent,determinable,106,120,120,119

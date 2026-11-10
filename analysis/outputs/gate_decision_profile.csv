@@ -1,0 +1,15 @@
+gold_kind,why,n_slots
+determinable,ambiguous,172
+determinable,confident,721
+determinable,keep,556
+determinable,unobservable,273
+determinable,unobservable_noslot,13
+referent_ambiguous,ambiguous,115
+referent_ambiguous,confident,67
+referent_ambiguous,keep,52
+referent_ambiguous,unobservable,55
+referent_ambiguous,unobservable_noslot,3
+unrecoverable,confident,1
+unrecoverable,keep,4
+unrecoverable,unobservable,140
+unrecoverable,unobservable_noslot,13

@@ -1,0 +1,20 @@
+# CCL v2 - laptop environment (Python 3.10-3.12). Install with:  pip install -r requirements_ccl.txt
+# Core (analysis, statistics, data)
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.3
+matplotlib>=3.8
+openpyxl>=3.1
+requests>=2.31
+sacrebleu>=2.4
+statsmodels>=0.14
+jupyter
+# NLLB baseline and FLORES+ filler (install a CUDA build of torch first: see pytorch.org "Get started")
+transformers>=4.46
+sentencepiece
+datasets>=2.20
+# The LLM server is installed separately (not a pip package here):
+#   llama.cpp prebuilt CUDA binaries: https://github.com/ggml-org/llama.cpp/releases   (llama-server)
+#   or Ollama: https://ollama.com/download
+#   or vLLM (Linux/WSL2 only): pip install vllm

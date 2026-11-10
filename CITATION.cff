@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this code or the reported results, please cite the accompanying article."
+title: "CCL-Gate: code and results for 'A calibrated character ledger for evidence-based gender decisions in machine translation'"
+type: software
+repository-code: "https://github.com/Muhammad-Zeeshan-Burki/Evidence-gated-gender-decisions-in-translation"
+authors:
+  - family-names: Burki
+    given-names: Muhammad Zeeshan
+    affiliation: "School of Computing Sciences, Pak-Austria Fachhochschule: Institute of Applied Sciences and Technology (PAF-IAST), Haripur, Pakistan"
+  - family-names: Rizwan
+    given-names: Muhammad
+    affiliation: "School of Computing Sciences, Pak-Austria Fachhochschule: Institute of Applied Sciences and Technology (PAF-IAST), Haripur, Pakistan"
+  - family-names: Naseem
+    given-names: Rashid
+    affiliation: "School of Computing Sciences, Pak-Austria Fachhochschule: Institute of Applied Sciences and Technology (PAF-IAST), Haripur, Pakistan"
+keywords:
+  - machine translation
+  - gender bias
+  - large language models
+  - selective prediction
+  - calibration
+  - abstention
+preferred-citation:
+  type: article
+  title: "A calibrated character ledger for evidence-based gender decisions in machine translation"
+  authors:
+    - family-names: Burki
+      given-names: Muhammad Zeeshan
+    - family-names: Rizwan
+      given-names: Muhammad
+    - family-names: Naseem
+      given-names: Rashid
+  year: 2026
+  notes: "Manuscript. Update this entry with the journal, volume and DOI after publication."

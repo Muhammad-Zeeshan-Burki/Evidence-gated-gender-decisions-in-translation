@@ -1,0 +1,7 @@
+gold_kind,condition,compliance_error,correct,decision_commit,decision_error,deferral_ignored,no_slot
+determinable,adjacent,6,279,0,383,0,17
+determinable,distant_8,2,77,0,198,0,15
+determinable,isolated,0,0,0,0,0,6
+determinable,memory,6,177,0,243,0,99
+referent_ambiguous,adjacent,0,191,43,0,3,3
+unrecoverable,isolated,0,136,1,0,12,3

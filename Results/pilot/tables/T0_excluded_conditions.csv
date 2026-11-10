@@ -1,0 +1,12 @@
+condition,system,n,parse_fail
+distant_32,ccl,352,0.9829545454545454
+distant_32,ccl_gate,352,0.9829545454545454
+distant_32,ccl_gate_posthoc,352,0.9715909090909091
+distant_32,ccl_no_repair,352,0.9829545454545454
+distant_32,ccl_posthoc,352,0.9715909090909091
+distant_32,infer_then_tag,352,0.9602272727272727
+distant_32,llm_cautious,352,0.96875
+distant_32,llm_cot_gender,352,0.7642045454545454
+distant_32,llm_plain,352,0.9715909090909091
+distant_32,oracle_goe,352,0.9545454545454546
+distant_32,probe,346,0.0

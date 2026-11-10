@@ -1,0 +1,517 @@
+{
+ "created": "2026-10-20T19:45:38.703036+00:00",
+ "run_mode": "pilot",
+ "config": {
+  "run_mode": "pilot",
+  "seed": 20261006,
+  "work_dir": "<project>\\_runtime\\ccl_work",
+  "datasets": {
+   "mittens": true,
+   "twc": true,
+   "mtgeneval": true,
+   "bwb": true,
+   "urdu": true,
+   "flores_filler": true,
+   "late_binding": true
+  },
+  "repos": {
+   "mittens": [
+    "https://github.com/google-research-datasets/mittens",
+    "1635a8076672d022695213942bda98ce046892a4"
+   ],
+   "twc": [
+    "https://github.com/pardissz/Translate-With-Care",
+    "84e280cd5ce5e45a4d158d8a7177103294c20c3e"
+   ],
+   "mtgeneval": [
+    "https://github.com/amazon-science/machine-translation-gender-eval",
+    "c77132ccd248d0b09ac185aebebc94f1051dbc9e"
+   ],
+   "names": [
+    "https://github.com/hadley/data-baby-names",
+    "b6525579cf7d2816e77fa885299445d15a09c906"
+   ]
+  },
+  "bwb_dir": "",
+  "bwb_gdrive_folder": "https://drive.google.com/drive/folders/12K1-DWmpEdqkaR_61aogdywsALDg4z1L",
+  "bwb_chunk_lines": 12,
+  "bwb_prev_raw_lines": 60,
+  "urdu_csv": "",
+  "flores": {
+   "hf_name": "openlanguagedata/flores_plus",
+   "split": "devtest",
+   "tarball_url": "https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz"
+  },
+  "x2en_core": [
+   "tr",
+   "fa",
+   "id",
+   "fi",
+   "et",
+   "az",
+   "bn",
+   "ur",
+   "es"
+  ],
+  "x2en_extended": [
+   "as",
+   "bho",
+   "mai",
+   "ln",
+   "lg",
+   "om"
+  ],
+  "en2x_langs": [
+   "hi",
+   "de",
+   "ar"
+  ],
+  "filler_distances": [
+   8,
+   32
+  ],
+  "limits": {
+   "dry_run": 3,
+   "smoke": 4,
+   "pilot": 20,
+   "full": 150
+  },
+  "target_marks_gender_langs": [
+   "om"
+  ],
+  "isolation_unverified_langs": [
+   "bho",
+   "mai"
+  ],
+  "exclude_unverified_isolation": true,
+  "llm": {
+   "backend": "openai",
+   "translator": "qwen3-8b",
+   "extractor": null,
+   "verifier": null,
+   "openai_base_url": "http://localhost:8080/v1",
+   "openai_api_key_env": "CCL_OPENAI_API_KEY",
+   "server_kind": "llamacpp",
+   "json_schema": true,
+   "disable_thinking": true,
+   "logprobs": true,
+   "max_new_tokens": 768,
+   "max_model_len": 4096,
+   "gpu_memory_utilization": 0.9,
+   "tensor_parallel_size": 1,
+   "concurrency": 4,
+   "request_timeout": 300
+  },
+  "model_grid": [
+   "qwen3-8b (Q4_K_M)",
+   "gemma-4-e4b (Q4_K_M)",
+   "llama-3.1-8b-instruct (Q4_K_M)",
+   "qwen3-4b (Q4_K_M)",
+   "qwen3-1.7b (Q8_0)",
+   "qwen3-30b-a3b or gemma-4-26b-a4b (Q4_K_M, MoE experts on CPU)"
+  ],
+  "nllb_model": "facebook/nllb-200-distilled-600M",
+  "name_prior_source": "table_then_llm",
+  "method": {
+   "posterior_samples": 5,
+   "resolve_temperature": 0.7,
+   "translate_temperature": 0.0,
+   "max_repair_rounds": 1,
+   "tau_grid": [
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+   ],
+   "default_tau": 0.7,
+   "noisy_ledger_rates": [
+    0.1,
+    0.3
+   ],
+   "fit_method": "temp",
+   "tau_rule": "balanced",
+   "saturate_counts": false,
+   "unknown_mode": "half"
+  },
+  "systems": [
+   "llm_plain",
+   "llm_cautious",
+   "llm_cot_gender",
+   "infer_then_tag",
+   "llm_summary_mem",
+   "llm_names_mem",
+   "probe",
+   "oracle_goe",
+   "ccl",
+   "ccl_posthoc",
+   "ccl_no_repair",
+   "ccl_gate",
+   "ccl_gate_posthoc"
+  ],
+  "run_bwb_systems": [
+   "llm_plain",
+   "llm_cautious",
+   "llm_summary_mem",
+   "llm_names_mem",
+   "ccl",
+   "ccl_no_repair"
+  ],
+  "v3": {
+   "enabled": [
+    "gate",
+    "hygiene",
+    "monotone",
+    "prior",
+    "prompts",
+    "prompts2",
+    "pseudo",
+    "slots",
+    "tauguard"
+   ],
+   "name_prior_clip": 0.05,
+   "given_name_prior": true
+  },
+  "analysis_exclude_conditions": [
+   "distant_32"
+  ],
+  "bootstrap_iters": 10000,
+  "human_eval_per_cell": 25,
+  "lab_both_resolvers": false,
+  "x2en_langs": [
+   "tr",
+   "fa",
+   "id",
+   "fi",
+   "et",
+   "az",
+   "bn",
+   "ur",
+   "es",
+   "as",
+   "bho",
+   "mai",
+   "ln",
+   "lg",
+   "om"
+  ]
+ },
+ "datasets": {
+  "mittens": {
+   "url": "https://github.com/google-research-datasets/mittens",
+   "commit_pinned": "1635a8076672d022695213942bda98ce046892a4",
+   "commit_used": "1635a8076672d022695213942bda98ce046892a4"
+  },
+  "twc": {
+   "url": "https://github.com/pardissz/Translate-With-Care",
+   "commit_pinned": "84e280cd5ce5e45a4d158d8a7177103294c20c3e",
+   "commit_used": "84e280cd5ce5e45a4d158d8a7177103294c20c3e",
+   "exact_match_test_rows_v1": 1756,
+   "split_counts": {
+    "dev": 2036,
+    "test": 1914
+   }
+  },
+  "mtgeneval": {
+   "url": "https://github.com/amazon-science/machine-translation-gender-eval",
+   "commit_pinned": "c77132ccd248d0b09ac185aebebc94f1051dbc9e",
+   "commit_used": "c77132ccd248d0b09ac185aebebc94f1051dbc9e"
+  },
+  "names": {
+   "url": "https://github.com/hadley/data-baby-names",
+   "commit_pinned": "b6525579cf7d2816e77fa885299445d15a09c906",
+   "commit_used": "b6525579cf7d2816e77fa885299445d15a09c906"
+  },
+  "flores_filler": {
+   "n_person_free": 242
+  },
+  "name_table": {
+   "source": "SSA via hadley/data-baby-names",
+   "n_names": 6782
+  }
+ },
+ "models": {
+  "qwen3-8b": {
+   "backend": "openai",
+   "server_kind": "llamacpp"
+  }
+ },
+ "notes": [
+  "name-gender lexicon from qwen3-8b: 2 names (construction tool; 0.95 filter)"
+ ],
+ "timings": {
+  "build_base": 1.19,
+  "validity_checks": 1.19,
+  "subsample": 0.03,
+  "counterfactuals": 0.06,
+  "ccl_extract": 1.24,
+  "ccl_resolve_lp": 0.75,
+  "calibration_dev_states": 1.31,
+  "calibration_dev_plain": 0.47,
+  "llm_plain": 0.75,
+  "llm_cautious": 0.77,
+  "llm_cot_gender": 0.51,
+  "infer_then_tag": 1.18,
+  "ccl_translate": 2.27,
+  "ccl_repair": 0.46,
+  "ccl_all_variants": 6.56,
+  "lab_real_states": 4.61
+ },
+ "python_executable": "<project>\\_runtime\\venv\\Scripts\\python.exe",
+ "validity": {
+  "V1_twc_split": {
+   "url": "https://github.com/pardissz/Translate-With-Care",
+   "commit_pinned": "84e280cd5ce5e45a4d158d8a7177103294c20c3e",
+   "commit_used": "84e280cd5ce5e45a4d158d8a7177103294c20c3e",
+   "exact_match_test_rows_v1": 1756,
+   "split_counts": {
+    "dev": 2036,
+    "test": 1914
+   }
+  },
+  "V2_target_marks_gender_share": {
+   "mittens|late_binding": 0.0,
+   "mittens|nouns_then_pronouns": 0.0826,
+   "mtgeneval|contextual": 0.0,
+   "twc|reasoning": 0.0068
+  },
+  "V2_mtg_target_has_context_name_share": 0.3559,
+  "V3_x2en_scorer_valid_share": {
+   "mittens|late_binding": 1.0,
+   "mittens|late_binding_same_sentence": 1.0,
+   "mittens|nouns_then_pronouns": 1.0,
+   "twc|bias": 0.9824,
+   "twc|neutrality": 0.9848,
+   "twc|reasoning": 0.9883,
+   "twc|reasoning_same_sentence": 0.9374
+  },
+  "V3_en2x_correct_ref_scored_correct": 1.0,
+  "V3_en2x_counterfactual_ref_detected": 0.9833926453143536,
+  "V4_twc_reasoning_name_recoverability": {
+   "opposite_pair": 1058,
+   "supported_only": 30,
+   "not_supported": 25
+  },
+  "V5_mittens_cue_type_by_lang": {
+   "explicit_noun": {
+    "as": 18,
+    "bho": 18,
+    "bn": 24,
+    "fa": 15,
+    "fi": 18,
+    "id": 21,
+    "lg": 6,
+    "ln": 12,
+    "mai": 18,
+    "om": 18,
+    "tr": 18
+   },
+   "name_only": {
+    "as": 0,
+    "bho": 0,
+    "bn": 0,
+    "fa": 6,
+    "fi": 0,
+    "id": 3,
+    "lg": 11,
+    "ln": 6,
+    "mai": 0,
+    "om": 0,
+    "tr": 6
+   }
+  },
+  "filter_scorer_invalid_items_dropped": 426
+ },
+ "throughput_probe": {
+  "requests": 8,
+  "concurrency": 4,
+  "wall_s": 10.9,
+  "completion_tokens": 964,
+  "prompt_tokens": 240,
+  "gen_tok_per_s_aggregate": 88.5,
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 7562 MiB, 8188 MiB"
+ },
+ "resolver": {
+  "lp_share_with_logprobs": 0.9906855439642325
+ },
+ "calibration": {
+  "weights": {
+   "gendered_pronoun": 1.2461880818618767,
+   "kinship_noun": 1.2461880818618767,
+   "gendered_title": 1.2461880818618767,
+   "gendered_noun": 1.0384900682182305,
+   "verb_agreement": 1.0384900682182305,
+   "adjective_agreement": 0.8307920545745845,
+   "narrator_statement": 1.2461880818618767,
+   "name": 0.3323168218298338
+  },
+  "meta": {
+   "n": 1001,
+   "fitted": true,
+   "method": "temp",
+   "share_rows_name_only": 0.747
+  },
+  "tau": 0.7,
+  "n_dev": 1840,
+  "tau_gate": 0.6
+ },
+ "risk_coverage_sweep_taus": [
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.999
+ ],
+ "finished": "2026-10-20T19:48:24.703586+00:00",
+ "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "packages": {
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "matplotlib": "3.11.2",
+  "sacrebleu": "2.6.0",
+  "statsmodels": "0.15.0",
+  "transformers": "5.20.1",
+  "datasets": "5.1.0"
+ },
+ "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 8188 MiB",
+ "llm_cache": {
+  "cache_hit": 56866
+ },
+ "n_test_instances": 2684,
+ "n_dev_instances": 1901,
+ "counterfactual_construction": {
+  "mit_ok_conflict": 179,
+  "mit_ok_flip": 31,
+  "mit_swap_failed": 7,
+  "twc_names_from_table": 162,
+  "twc_names_not_confident_opposite": 10,
+  "twc_not_two_names": 1,
+  "twc_ok": 173,
+  "twc_span_not_found": 11,
+  "mtg_ok": 95,
+  "mtg_has_gendered_noun": 14
+ },
+ "build_log": {
+  "mittens_nouns_unsplittable_fa": 3,
+  "mittens_nouns_unsplittable_lg": 1,
+  "twc_reasoning_same_sentence_fi": 247,
+  "twc_reasoning_same_sentence_tr": 248,
+  "twc_reasoning_same_sentence_id": 249,
+  "twc_reasoning_same_sentence_fa": 249,
+  "twc_reasoning_same_sentence_et": 246,
+  "twc_reasoning_same_sentence_az": 246,
+  "mtg_no_context": 27,
+  "scorer_invalid_dropped": 426
+ },
+ "mittens_name_forms": {
+  "as": {
+   "F": [
+    "চাৰা"
+   ],
+   "M": [
+    "বিন্যামীন"
+   ]
+  },
+  "bho": {
+   "F": [
+    "सारा"
+   ],
+   "M": [
+    "बिन्यामीन"
+   ]
+  },
+  "bn": {
+   "F": [
+    "সারাহ",
+    "সারা"
+   ],
+   "M": [
+    "বেঞ্জামিন"
+   ]
+  },
+  "fa": {
+   "F": [
+    "سارا"
+   ],
+   "M": [
+    "بنیامین"
+   ]
+  },
+  "fi": {
+   "F": [
+    "Sarah"
+   ],
+   "M": [
+    "Benjamin"
+   ]
+  },
+  "id": {
+   "F": [
+    "Sarah"
+   ],
+   "M": [
+    "Benyamin"
+   ]
+  },
+  "lg": {
+   "F": [
+    "Sarah"
+   ],
+   "M": [
+    "Benyamini"
+   ]
+  },
+  "ln": {
+   "F": [
+    "Sarah"
+   ],
+   "M": [
+    "Benyamina",
+    "Benjamin"
+   ]
+  },
+  "mai": {
+   "F": [
+    "सारा"
+   ],
+   "M": [
+    "बिन्यामिन",
+    "बिन्यामीन"
+   ]
+  },
+  "om": {
+   "F": [
+    "Saaraan"
+   ],
+   "M": [
+    "Biniyaam"
+   ]
+  },
+  "tr": {
+   "F": [
+    "Sarah"
+   ],
+   "M": [
+    "Benjamin"
+   ]
+  }
+ },
+ "dedup": {
+  "isolated_duplicates_dropped": 185
+ },
+ "llm_stats": {
+  "cache_hit": 56866
+ },
+ "output_hashes": {
+  "records_items.jsonl": "abf1d8bad30961d061e487fdce0d87dff52b54048972723461dde611c52dbaee",
+  "records_tau_sweep.jsonl": "b1393f9d776dec43c14c5ff64ac069ebf71af65c532c84e7618559dff06e1ec3"
+ },
+ "stamp": ""
+}

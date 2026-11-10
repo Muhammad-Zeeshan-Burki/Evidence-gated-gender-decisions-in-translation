@@ -1,0 +1,10 @@
+system,n,acc,neutral,mixed
+ccl,100,0.78,0.17,0.01
+ccl_gate,100,0.76,0.12,0.07
+ccl_gate_posthoc,100,0.8,0.09,0.09
+ccl_no_repair,100,0.82,0.13,0.02
+ccl_posthoc,100,0.85,0.1,0.04
+llm_cautious,100,0.97,0.0,0.02
+llm_cot_gender,100,0.99,0.0,0.0
+llm_plain,100,0.97,0.0,0.02
+oracle_goe,100,0.99,0.0,0.01

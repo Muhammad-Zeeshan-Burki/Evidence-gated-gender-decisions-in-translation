@@ -1,0 +1,5 @@
+condition,n,any_impossible,M,F
+adjacent,772.0,0.2837,195.0,35.0
+distant_8,237.0,0.2954,78.0,11.0
+isolated,150.0,0.8067,104.0,17.0
+memory,415.0,0.5831,210.0,33.0

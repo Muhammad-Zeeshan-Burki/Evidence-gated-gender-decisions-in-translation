@@ -1,0 +1,228 @@
+{
+ "run_mode": "pilot",
+ "config": {
+  "run_mode": "pilot",
+  "seed": 20261006,
+  "work_dir": "<project>\\_runtime\\ccl_work",
+  "datasets": {
+   "mittens": true,
+   "twc": true,
+   "mtgeneval": true,
+   "bwb": true,
+   "urdu": true,
+   "flores_filler": true,
+   "late_binding": true
+  },
+  "repos": {
+   "mittens": [
+    "https://github.com/google-research-datasets/mittens",
+    "1635a8076672d022695213942bda98ce046892a4"
+   ],
+   "twc": [
+    "https://github.com/pardissz/Translate-With-Care",
+    "84e280cd5ce5e45a4d158d8a7177103294c20c3e"
+   ],
+   "mtgeneval": [
+    "https://github.com/amazon-science/machine-translation-gender-eval",
+    "c77132ccd248d0b09ac185aebebc94f1051dbc9e"
+   ],
+   "names": [
+    "https://github.com/hadley/data-baby-names",
+    "b6525579cf7d2816e77fa885299445d15a09c906"
+   ]
+  },
+  "bwb_dir": "",
+  "bwb_gdrive_folder": "https://drive.google.com/drive/folders/12K1-DWmpEdqkaR_61aogdywsALDg4z1L",
+  "bwb_chunk_lines": 12,
+  "bwb_prev_raw_lines": 60,
+  "urdu_csv": "",
+  "flores": {
+   "hf_name": "openlanguagedata/flores_plus",
+   "split": "devtest",
+   "tarball_url": "https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz"
+  },
+  "x2en_core": [
+   "tr",
+   "fa",
+   "id",
+   "fi",
+   "et",
+   "az",
+   "bn",
+   "ur",
+   "es"
+  ],
+  "x2en_extended": [
+   "as",
+   "bho",
+   "mai",
+   "ln",
+   "lg",
+   "om"
+  ],
+  "en2x_langs": [
+   "hi",
+   "de",
+   "ar"
+  ],
+  "filler_distances": [
+   8,
+   32
+  ],
+  "limits": {
+   "dry_run": 3,
+   "smoke": 4,
+   "pilot": 20,
+   "full": 150
+  },
+  "target_marks_gender_langs": [
+   "om"
+  ],
+  "isolation_unverified_langs": [
+   "bho",
+   "mai"
+  ],
+  "exclude_unverified_isolation": true,
+  "llm": {
+   "backend": "openai",
+   "translator": "qwen3-8b",
+   "extractor": null,
+   "verifier": null,
+   "openai_base_url": "http://localhost:8080/v1",
+   "openai_api_key_env": "CCL_OPENAI_API_KEY",
+   "server_kind": "llamacpp",
+   "json_schema": true,
+   "disable_thinking": true,
+   "logprobs": true,
+   "max_new_tokens": 768,
+   "max_model_len": 4096,
+   "gpu_memory_utilization": 0.9,
+   "tensor_parallel_size": 1,
+   "concurrency": 4,
+   "request_timeout": 300
+  },
+  "model_grid": [
+   "qwen3-8b (Q4_K_M)",
+   "gemma-4-e4b (Q4_K_M)",
+   "llama-3.1-8b-instruct (Q4_K_M)",
+   "qwen3-4b (Q4_K_M)",
+   "qwen3-1.7b (Q8_0)",
+   "qwen3-30b-a3b or gemma-4-26b-a4b (Q4_K_M, MoE experts on CPU)"
+  ],
+  "nllb_model": "facebook/nllb-200-distilled-600M",
+  "name_prior_source": "table_then_llm",
+  "method": {
+   "posterior_samples": 5,
+   "resolve_temperature": 0.7,
+   "translate_temperature": 0.0,
+   "max_repair_rounds": 1,
+   "tau_grid": [
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+   ],
+   "default_tau": 0.7,
+   "noisy_ledger_rates": [
+    0.1,
+    0.3
+   ],
+   "fit_method": "temp",
+   "tau_rule": "balanced",
+   "saturate_counts": false,
+   "unknown_mode": "half"
+  },
+  "systems": [
+   "llm_plain",
+   "llm_cautious",
+   "llm_cot_gender",
+   "infer_then_tag",
+   "llm_summary_mem",
+   "llm_names_mem",
+   "probe",
+   "oracle_goe",
+   "ccl",
+   "ccl_posthoc",
+   "ccl_no_repair",
+   "ccl_gate",
+   "ccl_gate_posthoc"
+  ],
+  "run_bwb_systems": [
+   "llm_plain",
+   "llm_cautious",
+   "llm_summary_mem",
+   "llm_names_mem",
+   "ccl",
+   "ccl_no_repair"
+  ],
+  "v3": {
+   "enabled": [
+    "gate",
+    "hygiene",
+    "monotone",
+    "prior",
+    "prompts",
+    "prompts2",
+    "pseudo",
+    "slots",
+    "tauguard"
+   ],
+   "name_prior_clip": 0.05,
+   "given_name_prior": true
+  },
+  "analysis_exclude_conditions": [
+   "distant_32"
+  ],
+  "bootstrap_iters": 10000,
+  "human_eval_per_cell": 25,
+  "lab_both_resolvers": false,
+  "x2en_langs": [
+   "tr",
+   "fa",
+   "id",
+   "fi",
+   "et",
+   "az",
+   "bn",
+   "ur",
+   "es",
+   "as",
+   "bho",
+   "mai",
+   "ln",
+   "lg",
+   "om"
+  ]
+ },
+ "v3": [
+  "gate",
+  "hygiene",
+  "monotone",
+  "prior",
+  "prompts",
+  "prompts2",
+  "pseudo",
+  "slots",
+  "tauguard"
+ ],
+ "weights": {
+  "gendered_pronoun": 1.2461880818618767,
+  "kinship_noun": 1.2461880818618767,
+  "gendered_title": 1.2461880818618767,
+  "gendered_noun": 1.0384900682182305,
+  "verb_agreement": 1.0384900682182305,
+  "adjective_agreement": 0.8307920545745845,
+  "narrator_statement": 1.2461880818618767,
+  "name": 0.3323168218298338
+ },
+ "tau": 0.7,
+ "tau_gate": 0.6,
+ "analysis_excluded": [
+  "distant_32"
+ ]
+}

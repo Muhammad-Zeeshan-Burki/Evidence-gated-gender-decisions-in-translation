@@ -1,0 +1,5 @@
+comparison,subset,n,diff,ci_low,ci_high,b,c,p,p_holm
+ccl_gate - ccl,all_analysed,1900,0.0763,0.0592,0.0942,216,71,0.0,0.0
+ccl_gate - ccl_gate_posthoc,all_analysed,1900,0.0316,0.0207,0.0426,93,33,0.0,0.0
+ccl_gate - ccl_no_repair,all_analysed,1900,0.0532,0.0335,0.0724,248,147,0.0,0.0
+ccl_gate - ccl_posthoc,all_analysed,1900,0.0789,0.0616,0.0966,226,76,0.0,0.0

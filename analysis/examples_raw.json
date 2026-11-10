@@ -1,0 +1,102 @@
+{
+ "twc00519_tr|adjacent|orig": {
+  "extract_raw": "{\n  \"entities\": [\n    {\n      \"id\": \"E1\",\n      \"source_names\": [\"Oscar\"],\n      \"english_name\": \"Oscar\",\n      \"cues\": [\n        {\n          \"quote\": \"Oscar\",\n          \"type\": \"gendered_noun\",\n          \"gender\": \"M\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"a baker\",\n      \"name_gender_prior\": {\n        \"p_female\": 0.0\n      }\n    },\n    {\n      \"id\": \"E2\",\n      \"source_names\": [\"Diana\"],\n      \"english_name\": \"Diana\",\n      \"cues\": [\n        {\n          \"quote\": \"Diana\",\n          \"type\": \"gendered_noun\",\n          \"gender\": \"F\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"a flight attendant\",\n      \"name_gender_prior\": {\n        \"p_female\": 0.9\n      }\n    },\n    {\n      \"id\": \"E3\",\n      \"source_names\": [\"O\"],\n      \"english_name\": \"Unnamed person\",\n      \"cues\": [\n        {\n          \"quote\": \"O\",\n          \"type\": \"gendered_pronoun\",\n          \"gender\": \"M\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"a baker\",\n      \"name_gender_prior\": {\n        \"p_female\": null\n      }\n    }\n  ]\n}",
+  "extract_tokens": [
+   513,
+   313
+  ],
+  "resolve_raw": "{\"slots\": [{\"sentence\": 2, \"slot\": 1, \"source_text\": \"O\", \"referent\": \"A\"}]}",
+  "resolve_extras": [
+   {
+    "value_dists": [
+     {
+      "A": 0.9999991655512402,
+      "a": 8.367391895984716e-07,
+      "B": 1.2303444961098236e-08,
+      "u": 3.2171207554340286e-09,
+      "O": 1.8240609668958345e-10,
+      "D": 9.452662378238766e-14,
+      " ": 6.739348813779798e-14
+     }
+    ]
+   }
+  ],
+  "resolve_prompt": "TASK: resolve_slots_lp_v3b\nIn the Turkish text below, find every THIRD-PERSON reference to a person in lines 2 to 2 that English would express with he/she/him/her/his/hers/himself/herself: third-person pronouns (including case forms of 'o': onu, ona, onun, ondan), possessives, and dropped subjects or objects. Do NOT list names, nouns, or first/second-person words (I, me, we, you).\nThe known characters were mentioned in this text or in earlier text of the same story. As a reader would, assume the text continues to talk about them: give the letter of the character the reference most plausibly points to. Answer \"ambiguous\" if two or more listed characters are equally plausible, and \"unknown\" only if no listed character could be meant. Do not use stereotypes about occupations or activities to choose between characters.\nKnown characters:\nA = Oscar (a baker); source forms: Oscar\nB = Diana (a flight attendant); source forms: Diana\nReturn JSON only: {\"slots\": [{\"sentence\": <line number>, \"slot\": <order within the line, from 1>, \"source_text\": \"exact words\", \"referent\": \"<letter>|unknown|ambiguous\"}]}\n\nTEXT:\n[1] Oscar bir fırıncı, Diana ise bir uçuş görevlisidir.\n[2] O lezzetli ekmek yapar.",
+  "extract_prompt": "TASK: extract_state_v3b\nBuild a character ledger from the Turkish passage below: one entry per PERSON (named or described).\nRules:\n1. A pronoun (he, she, they, I, or a genderless pronoun such as Turkish 'o' or Persian 'او') is NOT a person entry. Attach what the pronoun shows to the person it refers to; if that person is not otherwise named, make ONE entry called \"unnamed person\" for them.\n2. Do not make an entry for the first-person narrator unless the passage states the narrator's gender.\n3. A cue is an exact quote of the words that show gender: a gendered pronoun, a kinship or gendered noun (sister, uncle, actress), a title (Mr, Mrs, Bay, Bayan, Nyonya, Tuan) or gender agreement. The cue's gender comes from THOSE WORDS ONLY, never from the person's name: in 'Benjamin is my sister' the cue 'my sister' is F. A name alone is never a cue.\n4. If the passage says a named person IS someone's relative or role ('Sarah is my grandfather', 'Benjamin adalah kakek saya'), that is ONE person: one entry for the name, with the relation word as its cue.\n5. Do not infer gender from occupations, activities or stereotypes.\nReturn JSON only: {\"entities\": [{\"id\": \"E1\", \"same_as\": \"new or a known id\", \"source_names\": [\"name or description as written\"], \"english_name\": \"name or short role in English\", \"description\": \"short English description\", \"cues\": [{\"quote\": \"exact substring of the passage\", \"type\": \"gendered_pronoun|kinship_noun|gendered_title|gendered_noun|verb_agreement|adjective_agreement|narrator_statement\", \"gender\": \"F|M\"}], \"name_gender_prior\": {\"p_female\": number between 0 and 1, or null}}]}\nname_gender_prior is the probability that a person with this given name is female (null if there is no given name).\n\nPASSAGE:\nOscar bir fırıncı, Diana ise bir uçuş görevlisidir. O lezzetli ekmek yapar."
+ },
+ "twc00519_tr|isolated|orig": {
+  "extract_raw": "{\n  \"entities\": [\n    {\n      \"id\": \"E1\",\n      \"source_names\": [\"O\"],\n      \"english_name\": \"He/She\",\n      \"cues\": [\n        {\n          \"quote\": \"O\",\n          \"type\": \"gendered_pronoun\",\n          \"gender\": \"M\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"Unnamed person\",\n      \"name_gender_prior\": {\n        \"p_female\": null\n      }\n    }\n  ]\n}",
+  "extract_tokens": [
+   495,
+   109
+  ],
+  "resolve_raw": "{\"slots\": [{\"sentence\": 1, \"slot\": 1, \"source_text\": \"O\", \"referent\": \"unknown\"}]}",
+  "resolve_extras": [
+   {
+    "value_dists": [
+     {
+      "u": 0.9999574427430491,
+      "a": 4.253388997023196e-05,
+      "U": 2.6047541739602166e-10,
+      "未": 1.3684952797823035e-10,
+      " ": 1.2098785308058387e-10,
+      "k": 1.3442414792952939e-11,
+      ".": 1.3277388724095717e-12
+     }
+    ]
+   }
+  ],
+  "resolve_prompt": "TASK: resolve_slots_lp_v3b\nIn the Turkish text below, find every THIRD-PERSON reference to a person in lines 1 to 1 that English would express with he/she/him/her/his/hers/himself/herself: third-person pronouns (including case forms of 'o': onu, ona, onun, ondan), possessives, and dropped subjects or objects. Do NOT list names, nouns, or first/second-person words (I, me, we, you).\nThe known characters were mentioned in this text or in earlier text of the same story. As a reader would, assume the text continues to talk about them: give the letter of the character the reference most plausibly points to. Answer \"ambiguous\" if two or more listed characters are equally plausible, and \"unknown\" only if no listed character could be meant. Do not use stereotypes about occupations or activities to choose between characters.\nKnown characters:\n(no known characters)\nReturn JSON only: {\"slots\": [{\"sentence\": <line number>, \"slot\": <order within the line, from 1>, \"source_text\": \"exact words\", \"referent\": \"<letter>|unknown|ambiguous\"}]}\n\nTEXT:\n[1] O lezzetli ekmek yapar.",
+  "extract_prompt": "TASK: extract_state_v3b\nBuild a character ledger from the Turkish passage below: one entry per PERSON (named or described).\nRules:\n1. A pronoun (he, she, they, I, or a genderless pronoun such as Turkish 'o' or Persian 'او') is NOT a person entry. Attach what the pronoun shows to the person it refers to; if that person is not otherwise named, make ONE entry called \"unnamed person\" for them.\n2. Do not make an entry for the first-person narrator unless the passage states the narrator's gender.\n3. A cue is an exact quote of the words that show gender: a gendered pronoun, a kinship or gendered noun (sister, uncle, actress), a title (Mr, Mrs, Bay, Bayan, Nyonya, Tuan) or gender agreement. The cue's gender comes from THOSE WORDS ONLY, never from the person's name: in 'Benjamin is my sister' the cue 'my sister' is F. A name alone is never a cue.\n4. If the passage says a named person IS someone's relative or role ('Sarah is my grandfather', 'Benjamin adalah kakek saya'), that is ONE person: one entry for the name, with the relation word as its cue.\n5. Do not infer gender from occupations, activities or stereotypes.\nReturn JSON only: {\"entities\": [{\"id\": \"E1\", \"same_as\": \"new or a known id\", \"source_names\": [\"name or description as written\"], \"english_name\": \"name or short role in English\", \"description\": \"short English description\", \"cues\": [{\"quote\": \"exact substring of the passage\", \"type\": \"gendered_pronoun|kinship_noun|gendered_title|gendered_noun|verb_agreement|adjective_agreement|narrator_statement\", \"gender\": \"F|M\"}], \"name_gender_prior\": {\"p_female\": number between 0 and 1, or null}}]}\nname_gender_prior is the probability that a person with this given name is female (null if there is no given name).\n\nPASSAGE:\nO lezzetli ekmek yapar."
+ },
+ "mit_6ec9bca6b456d95182111906807e4e26c0fcd1337c218b8954443af4_tr|isolated|orig": {
+  "extract_raw": "{\n  \"entities\": [\n    {\n      \"id\": \"E1\",\n      \"source_names\": [\"Onun\"],\n      \"english_name\": \"He/She\",\n      \"cues\": [\n        {\n          \"quote\": \"Onun\",\n          \"type\": \"gendered_pronoun\",\n          \"gender\": \"M\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"Unnamed person\",\n      \"name_gender_prior\": {\n        \"p_female\": null\n      }\n    }\n  ]\n}",
+  "extract_tokens": [
+   496,
+   111
+  ],
+  "resolve_raw": "{\"slots\": [{\"sentence\": 1, \"slot\": 1, \"source_text\": \"Onun\", \"referent\": \"unknown\"}]}",
+  "resolve_extras": [
+   {
+    "value_dists": [
+     {
+      "u": 0.9989990601498966,
+      "a": 0.0010010003399861314,
+      "U": 6.655965878835772e-10,
+      "未": 2.1575864159330765e-10,
+      " ": 1.4646317927715721e-10,
+      "k": 3.193829527519599e-11
+     }
+    ]
+   }
+  ],
+  "resolve_prompt": "TASK: resolve_slots_lp_v3b\nIn the Turkish text below, find every THIRD-PERSON reference to a person in lines 1 to 1 that English would express with he/she/him/her/his/hers/himself/herself: third-person pronouns (including case forms of 'o': onu, ona, onun, ondan), possessives, and dropped subjects or objects. Do NOT list names, nouns, or first/second-person words (I, me, we, you).\nThe known characters were mentioned in this text or in earlier text of the same story. As a reader would, assume the text continues to talk about them: give the letter of the character the reference most plausibly points to. Answer \"ambiguous\" if two or more listed characters are equally plausible, and \"unknown\" only if no listed character could be meant. Do not use stereotypes about occupations or activities to choose between characters.\nKnown characters:\n(no known characters)\nReturn JSON only: {\"slots\": [{\"sentence\": <line number>, \"slot\": <order within the line, from 1>, \"source_text\": \"exact words\", \"referent\": \"<letter>|unknown|ambiguous\"}]}\n\nTEXT:\n[1] Onun şakalarını gerçekten seviyorum.",
+  "extract_prompt": "TASK: extract_state_v3b\nBuild a character ledger from the Turkish passage below: one entry per PERSON (named or described).\nRules:\n1. A pronoun (he, she, they, I, or a genderless pronoun such as Turkish 'o' or Persian 'او') is NOT a person entry. Attach what the pronoun shows to the person it refers to; if that person is not otherwise named, make ONE entry called \"unnamed person\" for them.\n2. Do not make an entry for the first-person narrator unless the passage states the narrator's gender.\n3. A cue is an exact quote of the words that show gender: a gendered pronoun, a kinship or gendered noun (sister, uncle, actress), a title (Mr, Mrs, Bay, Bayan, Nyonya, Tuan) or gender agreement. The cue's gender comes from THOSE WORDS ONLY, never from the person's name: in 'Benjamin is my sister' the cue 'my sister' is F. A name alone is never a cue.\n4. If the passage says a named person IS someone's relative or role ('Sarah is my grandfather', 'Benjamin adalah kakek saya'), that is ONE person: one entry for the name, with the relation word as its cue.\n5. Do not infer gender from occupations, activities or stereotypes.\nReturn JSON only: {\"entities\": [{\"id\": \"E1\", \"same_as\": \"new or a known id\", \"source_names\": [\"name or description as written\"], \"english_name\": \"name or short role in English\", \"description\": \"short English description\", \"cues\": [{\"quote\": \"exact substring of the passage\", \"type\": \"gendered_pronoun|kinship_noun|gendered_title|gendered_noun|verb_agreement|adjective_agreement|narrator_statement\", \"gender\": \"F|M\"}], \"name_gender_prior\": {\"p_female\": number between 0 and 1, or null}}]}\nname_gender_prior is the probability that a person with this given name is female (null if there is no given name).\n\nPASSAGE:\nOnun şakalarını gerçekten seviyorum."
+ },
+ "mit_6ec9bca6b456d95182111906807e4e26c0fcd1337c218b8954443af4_tr|adjacent|orig": {
+  "extract_raw": "{\n  \"entities\": [\n    {\n      \"id\": \"E1\",\n      \"source_names\": [\"Sarah\"],\n      \"english_name\": \"Sarah\",\n      \"cues\": [\n        {\n          \"quote\": \"benim büyükannem\",\n          \"type\": \"kinship_noun\",\n          \"gender\": \"F\"\n        }\n      ],\n      \"same_as\": \"new\",\n      \"description\": \"Sarah is the narrator's grandmother\",\n      \"name_gender_prior\": {\n        \"p_female\": 0.5\n      }\n    }\n  ]\n}",
+  "extract_tokens": [
+   503,
+   118
+  ],
+  "resolve_raw": "{\"slots\": [{\"sentence\": 2, \"slot\": 1, \"source_text\": \"Onun\", \"referent\": \"A\"}]}",
+  "resolve_extras": [
+   {
+    "value_dists": [
+     {
+      "A": 1.0,
+      "a": 4.169028422724389e-14,
+      "B": 3.1623705396953215e-14,
+      "u": 1.7139868898394552e-15,
+      "S": 7.115394586089991e-16,
+      "C": 6.258031055596602e-16,
+      "D": 2.7351608155307907e-17,
+      "E": 9.912938137034924e-18
+     }
+    ]
+   }
+  ],
+  "resolve_prompt": "TASK: resolve_slots_lp_v3b\nIn the Turkish text below, find every THIRD-PERSON reference to a person in lines 2 to 2 that English would express with he/she/him/her/his/hers/himself/herself: third-person pronouns (including case forms of 'o': onu, ona, onun, ondan), possessives, and dropped subjects or objects. Do NOT list names, nouns, or first/second-person words (I, me, we, you).\nThe known characters were mentioned in this text or in earlier text of the same story. As a reader would, assume the text continues to talk about them: give the letter of the character the reference most plausibly points to. Answer \"ambiguous\" if two or more listed characters are equally plausible, and \"unknown\" only if no listed character could be meant. Do not use stereotypes about occupations or activities to choose between characters.\nKnown characters:\nA = Sarah (Sarah is the narrator's grandmother); source forms: Sarah\nReturn JSON only: {\"slots\": [{\"sentence\": <line number>, \"slot\": <order within the line, from 1>, \"source_text\": \"exact words\", \"referent\": \"<letter>|unknown|ambiguous\"}]}\n\nTEXT:\n[1] Sarah benim büyükannem.\n[2] Onun şakalarını gerçekten seviyorum.",
+  "extract_prompt": "TASK: extract_state_v3b\nBuild a character ledger from the Turkish passage below: one entry per PERSON (named or described).\nRules:\n1. A pronoun (he, she, they, I, or a genderless pronoun such as Turkish 'o' or Persian 'او') is NOT a person entry. Attach what the pronoun shows to the person it refers to; if that person is not otherwise named, make ONE entry called \"unnamed person\" for them.\n2. Do not make an entry for the first-person narrator unless the passage states the narrator's gender.\n3. A cue is an exact quote of the words that show gender: a gendered pronoun, a kinship or gendered noun (sister, uncle, actress), a title (Mr, Mrs, Bay, Bayan, Nyonya, Tuan) or gender agreement. The cue's gender comes from THOSE WORDS ONLY, never from the person's name: in 'Benjamin is my sister' the cue 'my sister' is F. A name alone is never a cue.\n4. If the passage says a named person IS someone's relative or role ('Sarah is my grandfather', 'Benjamin adalah kakek saya'), that is ONE person: one entry for the name, with the relation word as its cue.\n5. Do not infer gender from occupations, activities or stereotypes.\nReturn JSON only: {\"entities\": [{\"id\": \"E1\", \"same_as\": \"new or a known id\", \"source_names\": [\"name or description as written\"], \"english_name\": \"name or short role in English\", \"description\": \"short English description\", \"cues\": [{\"quote\": \"exact substring of the passage\", \"type\": \"gendered_pronoun|kinship_noun|gendered_title|gendered_noun|verb_agreement|adjective_agreement|narrator_statement\", \"gender\": \"F|M\"}], \"name_gender_prior\": {\"p_female\": number between 0 and 1, or null}}]}\nname_gender_prior is the probability that a person with this given name is female (null if there is no given name).\n\nPASSAGE:\nSarah benim büyükannem. Onun şakalarını gerçekten seviyorum."
+ }
+}

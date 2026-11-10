@@ -1,0 +1,15 @@
+system,cf_note,n,both_correct,insensitive
+ccl,name_flip,134,0.3582,0.0224
+ccl,name_only_flip,46,0.3261,0.0
+ccl_gate,name_flip,134,0.3955,0.1343
+ccl_gate,name_only_flip,46,0.3913,0.1087
+infer_then_tag,name_flip,134,0.3806,0.5448
+infer_then_tag,name_only_flip,46,0.2174,0.5217
+llm_cautious,name_flip,134,0.2239,0.6493
+llm_cautious,name_only_flip,46,0.1957,0.3261
+llm_cot_gender,name_flip,134,0.4104,0.4104
+llm_cot_gender,name_only_flip,46,0.3696,0.0652
+llm_plain,name_flip,134,0.3284,0.5075
+llm_plain,name_only_flip,46,0.3696,0.1739
+oracle_goe,name_flip,134,0.9627,0.0
+oracle_goe,name_only_flip,46,0.8478,0.0

@@ -1,0 +1,9 @@
+system,n,correct,lo,hi
+llm_plain,1834,0.4711,0.4411,0.5003
+llm_cautious,1834,0.4586,0.4284,0.4882
+llm_cot_gender,1834,0.4624,0.434,0.4911
+infer_then_tag,1834,0.4913,0.4593,0.5223
+ccl,1834,0.4526,0.4238,0.4821
+ccl_gate,1834,0.5267,0.4959,0.557
+oracle_goe,1834,0.7432,0.719,0.7662
+always_neutral_reference,1834,0.2121,,

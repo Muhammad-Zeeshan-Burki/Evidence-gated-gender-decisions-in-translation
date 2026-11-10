@@ -1,0 +1,47 @@
+{
+ "calibration": {
+  "ECE": 0.0656,
+  "Brier": 0.2064,
+  "n": 1531
+ },
+ "hygiene": {
+  "n_heldout": 1834,
+  "n_genderless": 1574,
+  "share_genderless_with_impossible_cue": 0.4142,
+  "impossible_cues_M": 587,
+  "impossible_cues_F": 96,
+  "n_isolated_genderless": 150,
+  "isolated_share_any_impossible": 0.8067,
+  "isolated_share_masculine_only": 0.6933,
+  "isolated_share_feminine_only": 0.1133,
+  "share_with_name_only_cue": 0.6221,
+  "name_only_cues": 2285,
+  "cues_kept": 1290,
+  "share_with_pseudo_pronoun_entity": 0.3353
+ },
+ "n": {
+  "heldout_instances": 1834,
+  "heldout_det": 1445,
+  "heldout_unr": 389,
+  "analysed_instances": 1900,
+  "heldout_items": 675,
+  "analysed_items": 692,
+  "heldout_languages": [
+   "as",
+   "az",
+   "bho",
+   "bn",
+   "es",
+   "et",
+   "fa",
+   "fi",
+   "id",
+   "lg",
+   "ln",
+   "mai",
+   "om",
+   "tr"
+  ],
+  "n_test_instances_all": 2684
+ }
+}

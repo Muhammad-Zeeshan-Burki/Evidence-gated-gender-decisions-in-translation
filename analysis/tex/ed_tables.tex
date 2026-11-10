@@ -1,0 +1,151 @@
+\begin{table}[!htbp]
+\caption{\textbf{Benchmark composition.} Instances per dataset and subset in the development and test splits. Conditions are adjacent (A), distant with 8 or 32 filler sentences (D8, D32), memory (M) and isolated (I). Gold labels are determinable (det.), unrecoverable (unrec.), referent-ambiguous (ambig.), passage-level (passage) or mixed-gender context (mixed). Analysed instances are the \xen{} determinable, unrecoverable and referent-ambiguous instances in conditions A, D8, M and I. Held-out instances exclude items inspected during development. Counterfactual variants are included in the counts.}\label{edtab:data}
+\tiny
+\setlength{\tabcolsep}{1.8pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{2.0cm}L{1.1cm}L{3.0cm}L{1.1cm}L{1.1cm}rrrr@{}}
+\toprule
+Dataset and subset & Direction & Languages & Condi\-tions & Gold labels & Dev & Test & Ana\-lysed & Held-out \\
+\midrule
+MiTTenS, Nouns then pronouns & \xen & Assamese, Bengali, Bhojpuri, Finnish, Indonesian, Lingala, Luganda, Maithili, Oromo, Persian, Turkish & A, D8, D32, M, I & det., unrec. & 268 & 1,059 & 887 & 826 \\
+MiTTenS, Late binding & \xen & Spanish & A, I & det., unrec. & 19 & 21 & 21 & 19 \\
+MiTTenS, Late binding, one sentence & \xen & Spanish & A & det. & 20 & 20 & 20 & 20 \\
+MiTTenS, Synthetic biographies & \xen & Arabic, German, Hindi, Indonesian, Spanish & A & passage & 41 & 100 & -- & -- \\
+TWC, Reasoning & \xen & Azerbaijani, Estonian, Finnish, Indonesian, Persian, Turkish & A, D8, D32, M, I & det., unrec. & 809 & 732 & 612 & 612 \\
+TWC, Reasoning, one sentence & \xen & Azerbaijani, Estonian, Finnish, Indonesian, Persian, Turkish & A & det. & 106 & 120 & 120 & 119 \\
+TWC, Bias & \xen & Azerbaijani, Estonian, Finnish, Indonesian, Persian, Turkish & A & ambig. & 120 & 120 & 120 & 118 \\
+TWC, Neutrality & \xen & Azerbaijani, Estonian, Finnish, Indonesian, Persian, Turkish & A & ambig. & 120 & 120 & 120 & 120 \\
+MT-GenEval, Contextual & \enx & Arabic, German, Hindi & A, D8, D32, M, I & det., mixed, unrec. & 398 & 392 & -- & -- \\
+\midrule
+Total & & 17 source and 3 target languages & & & 1,901 & 2,684 & 1,900 & 1,834 \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Held-out paired comparisons.} Difference in per-instance correctness, CCL-Gate minus each prompting strategy, in percentage points with 95\% item-cluster bootstrap intervals (10,000 resamples). $b$ counts instances that CCL-Gate gets right and the baseline gets wrong, and $c$ counts the reverse. $P$ is the two-sided exact McNemar test, and $P_{\text{Holm}}$ is adjusted across the four baselines within each condition.}\label{edtab:paired}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llrrll@{}}
+\toprule
+Baseline & Difference [95\% CI] & $b$ & $c$ & $P$ & $P_{\text{Holm}}$ \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{All conditions ($n=1{,}834$)}} \\
+\quad Plain prompting & +5.6 [3.2, 8.0] & 325 & 223 & $1.5\times10^{-5}$ & $3.0\times10^{-5}$ \\
+\quad Cautious prompting & +6.8 [4.1, 9.6] & 385 & 260 & $9.7\times10^{-7}$ & $3.9\times10^{-6}$ \\
+\quad Chain-of-thought & +6.4 [3.8, 9.1] & 392 & 274 & $5.5\times10^{-6}$ & $1.6\times10^{-5}$ \\
+\quad Infer-then-tag & +3.5 [$-$0.2, 7.4] & 445 & 380 & 0.026 & 0.026 \\
+\addlinespace
+\multicolumn{6}{@{}l}{\textit{Adjacent ($n=896$)}} \\
+\quad Plain prompting & +5.1 [1.4, 8.8] & 166 & 120 & 0.008 & 0.015 \\
+\quad Cautious prompting & +6.8 [3.0, 10.7] & 184 & 123 & $5.9\times10^{-4}$ & 0.002 \\
+\quad Chain-of-thought & +8.4 [4.5, 12.3] & 192 & 117 & $2.3\times10^{-5}$ & $9.4\times10^{-5}$ \\
+\quad Infer-then-tag & +5.6 [1.1, 10.1] & 211 & 161 & 0.011 & 0.015 \\
+\addlinespace
+\multicolumn{6}{@{}l}{\textit{Memory ($n=501$)}} \\
+\quad Plain prompting & $-$1.8 [$-$4.8, 1.2] & 25 & 34 & 0.298 & 0.595 \\
+\quad Cautious prompting & $-$1.8 [$-$6.3, 2.8] & 55 & 64 & 0.463 & 0.595 \\
+\quad Chain-of-thought & $-$4.8 [$-$9.5, 0.0] & 58 & 82 & 0.052 & 0.155 \\
+\quad Infer-then-tag & $-$6.8 [$-$13.3, $-$0.4] & 89 & 123 & 0.023 & 0.093 \\
+\addlinespace
+\multicolumn{6}{@{}l}{\textit{Distant ($n=280$)}} \\
+\quad Plain prompting & $-$16.4 [$-$22.5, $-$10.4] & 20 & 66 & $6.7\times10^{-7}$ & $1.4\times10^{-6}$ \\
+\quad Cautious prompting & $-$17.5 [$-$23.9, $-$11.1] & 23 & 72 & $4.8\times10^{-7}$ & $1.4\times10^{-6}$ \\
+\quad Chain-of-thought & $-$16.8 [$-$23.2, $-$10.0] & 25 & 72 & $1.9\times10^{-6}$ & $1.9\times10^{-6}$ \\
+\quad Infer-then-tag & $-$28.2 [$-$34.6, $-$21.8] & 16 & 95 & $7.5\times10^{-15}$ & $3.0\times10^{-14}$ \\
+\addlinespace
+\multicolumn{6}{@{}l}{\textit{Isolated ($n=157$)}} \\
+\quad Plain prompting & +70.7 [62.4, 78.3] & 114 & 3 & $3.2\times10^{-30}$ & $3.2\times10^{-30}$ \\
+\quad Cautious prompting & +77.7 [70.7, 84.1] & 123 & 1 & $1.2\times10^{-35}$ & $3.5\times10^{-35}$ \\
+\quad Chain-of-thought & +72.6 [65.0, 80.3] & 117 & 3 & $4.3\times10^{-31}$ & $8.7\times10^{-31}$ \\
+\quad Infer-then-tag & +81.5 [75.2, 87.3] & 129 & 1 & $1.9\times10^{-37}$ & $7.7\times10^{-37}$ \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Settings, calibrated parameters and cost.} All systems share the model, server and decoding settings. Token counts are prompt plus completion tokens per test instance across all conditions, including the distant-32 condition.}\label{edtab:settings}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{3.4cm}L{9.0cm}@{}}
+\toprule
+\multicolumn{2}{@{}l}{\textit{Model and inference}}\\
+Model & Qwen3-8B, GGUF 4-bit k-quantization (Q4\_K\_M), thinking mode disabled \\
+Server & llama.cpp build b11642 (CUDA 12.4), OpenAI-compatible interface, four parallel slots \\
+Context per slot & 4,096 tokens with 16-bit key--value cache; reissued requests 8,192 tokens with 8-bit key--value cache \\
+Decoding & Greedy; JSON-schema constraints for extraction, resolution, probe and gender inference \\
+Generation budgets (tokens) & Translation and repair 768; extraction and chain-of-thought 1,024; resolution 512; probe and inference 32 \\
+Resolver probabilities & Ten most probable tokens at each output position; letters A--T for up to 20 characters \\
+Hardware & NVIDIA GeForce RTX 4070 Laptop GPU (8 GB), AMD Ryzen 9 7845HX, 32 GB memory; 88.5 generated tokens\,s$^{-1}$ with four concurrent requests \\
+\addlinespace
+\multicolumn{2}{@{}l}{\textit{Evidence model and gate}}\\
+Expert weights $\mathbf{w}^{(0)}$ & Gendered pronoun, kinship noun, gendered title and narrator statement 3.0; gendered noun and verb agreement 2.5; adjective agreement 2.0; name prior 0.8 \\
+Temperature $a$ & 0.415, fitted by maximum likelihood on 1,001 development slots ($\lambda=10^{-3}$, L-BFGS-B) \\
+Name prior $\pi_e$ & Female share of SSA birth records for the given name (6,782 names), clipped to $[0.05, 0.95]$ \\
+Full-conditioning threshold $\tau$ & 0.70, selected from $\{0.55, 0.60, \dots, 0.95\}$ by development balanced accuracy \\
+Gate threshold $\tau_{\text{gate}}$ & 0.60, selected from $\{0.60, 0.65, \dots, 0.95, 1.01\}$ on simulated development outputs \\
+Ambiguity rule & Defer if $a_k\ge0.5$ and two characters with evidence lean to opposite genders \\
+Repair & One targeted repair round, kept only if the violation disappears \\
+\addlinespace
+\multicolumn{2}{@{}l}{\textit{Statistics}}\\
+Intervals and tests & Item-cluster bootstrap with 10,000 resamples (500 for the decision-layer analysis); exact McNemar test; Holm adjustment; seed 20261006 \\
+\addlinespace
+\multicolumn{2}{@{}l}{\textit{Tokens per instance, mean (median)}}\\
+Plain prompting & 269 (131) \\
+Cautious prompting & 331 (189) \\
+Chain-of-thought & 428 (259) \\
+Infer-then-tag & 495 (291) \\
+Gold-label reference & 283 (146) \\
+CCL (full conditioning) & 1,968 (1,640) \\
+CCL without repair & 1,890 (1,566) \\
+CCL applied post hoc & 1,984 (1,604) \\
+Gate applied post hoc & 1,959 (1,600) \\
+CCL-Gate & 1,940 (1,622) \\
+Knowledge probe & 239 (156) \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Decision-layer analysis.} Slot decisions of the full-conditioning rule re-evaluated on cached ledger and resolver states of the test set (no new model calls). Weights and thresholds are refitted on development data for every variant. BAL, ACC, deferral, coverage and risk are decision-level quantities. $\Delta$BAL is the paired difference from the reference configuration, in percentage points, with a 95\% item-cluster bootstrap interval (500 resamples). The bounded maximum-likelihood fit produced the same decisions as the reference.}\label{edtab:lab}
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{3.3cm}rrrrrrl@{}}
+\toprule
+Variant & $\tau$ & BAL & ACC & Deferral & Coverage & Risk & $\Delta$BAL [95\% CI] \\
+\midrule
+Reference: one non-negative weight per cue type, balanced threshold rule & 0.70 & 0.531 & 0.222 & 0.841 & 0.274 & 0.244 & -- \\
+Single temperature on expert weights (used in CCL-Gate) & 0.70 & 0.520 & 0.239 & 0.801 & 0.302 & 0.276 & $-$1.1 [$-$2.3, $-$0.1] \\
+Per-type weights by bounded maximum likelihood & 0.70 & 0.531 & 0.222 & 0.841 & 0.274 & 0.244 & 0.0 [0.0, 0.0] \\
+Two weights (all cues pooled, name prior) & 0.70 & 0.520 & 0.239 & 0.801 & 0.303 & 0.277 & $-$1.1 [$-$2.2, $-$0.2] \\
+Expert weights without fitting & 0.90 & 0.525 & 0.232 & 0.819 & 0.287 & 0.256 & $-$0.6 [$-$1.8, 0.5] \\
+Most probable referent only, no averaging over $q_k$ & 0.70 & 0.527 & 0.226 & 0.827 & 0.282 & 0.256 & $-$0.4 [$-$1.1, 0.0] \\
+Saturating cue counts, $\operatorname{sign}(n)\log(1+|n|)$ & 0.70 & 0.531 & 0.221 & 0.841 & 0.273 & 0.245 & 0.0 [$-$0.1, 0.0] \\
+Name prior removed & 0.60 & 0.509 & 0.152 & 0.865 & 0.173 & 0.187 & $-$2.2 [$-$4.1, $-$0.3] \\
+Unresolved mass renormalized away & 0.90 & 0.498 & 0.080 & 0.916 & 0.084 & 0.087 & $-$3.3 [$-$5.1, $-$1.6] \\
+Fixed threshold $\tau=0.8$ & 0.80 & 0.502 & 0.090 & 0.914 & 0.096 & 0.104 & $-$2.9 [$-$4.4, $-$1.5] \\
+Threshold chosen for development risk $\le0.10$ & 0.95 & 0.468 & 0.005 & 0.931 & 0.005 & 0.000 & $-$6.3 [$-$8.0, $-$4.6] \\
+No deferral (commit to the more probable gender) & 0.50 & 0.195 & 0.390 & 0.000 & 0.537 & 0.387 & $-$33.6 [$-$35.5, $-$31.8] \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Illustrative held-out examples.} Verbatim outputs for the target line of held-out instances, chosen to illustrate each decision type of the gate; they are not a random sample. Earlier text available only as background is shown in italics. The decision gives the gate's output for the target slot with the reason and $\mathrm{conf}_k$.}\label{edtab:examples}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{1.65cm}L{2.45cm}L{1.75cm}L{1.75cm}L{1.75cm}L{1.6cm}@{}}
+\toprule
+Language, condition & Source (gold) & Plain prompting & Cautious prompting & CCL-Gate & Gate decision \\
+\midrule
+Turkish, isolated & Onun \c{s}akalar\i n\i{} ger\c{c}ekten seviyorum. (unrecoverable) & I really like his jokes. & I really like his jokes. & I really like their jokes. & Defer (unobservable) \\
+\addlinespace
+Turkish, adjacent & Oscar bir f\i r\i nc\i, Diana ise bir u\c{c}u\c{s} g\"orevlisidir. O lezzetli ekmek yapar. (male) & She makes delicious bread. & He makes delicious bread. & He makes delicious bread. & Commit male (confident, 0.73) \\
+\addlinespace
+Indonesian, adjacent & Oliver dan Alice adalah seniman, dia menggunakan cat air. (referent-ambiguous) & Oliver and Alice are artists, she uses watercolor. & Oliver and Alice are artists, he uses watercolor. & Oliver and Alice are artists, they use watercolor. & Defer (ambiguous, 0.61) \\
+\addlinespace
+Finnish, memory & \textit{Emily on uimari ja Lucas valokuvaaja.} H\"an ottaa valokuvia. (male) & She takes photographs. & She takes photographs. & He takes photographs. & Commit male (confident, 0.73) \\
+\addlinespace
+Estonian, adjacent & Vend John on munk ja Dame Helen on balletitantsija. Ta elab kloostris. (male) & She lives in a monastery. & He lived in a monastery. & He lives in a monastery. & Commit male (confident, 0.73) \\
+\botrule
+\end{tabular*}
+\end{table}
+

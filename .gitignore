@@ -1,0 +1,43 @@
+# Local runtime (virtual environment, llama.cpp binaries, model weights, caches, logs).
+# Created by scripts/windows/*.ps1; never committed.
+_runtime/
+ccl_work/
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+
+# Model weights and large intermediates
+*.gguf
+*.safetensors
+*.bin
+*.sqlite
+*.pkl
+
+# Per-instance outputs written by a local run (not distributed; see README, "Data")
+Results/*/records/records_items.jsonl
+Results/*/records/scores_items.csv
+Results/*/records/scores_tau_sweep.csv
+Results/*/tables/human_eval_*.csv
+Results/*/tables/error_analysis_sample.csv
+Results/*/tables/verify_counterfactuals.csv
+Results/dry_run/
+Results/smoke/
+
+# Regenerated figure renders (scripts write them next to the sources)
+figure_sources/**/*.png
+figure_sources/**/*.svg
+figure_sources/**/*.pdf
+figure_sources/**/*.pptx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

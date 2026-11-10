@@ -1,0 +1,10 @@
+system,cf_note,both_correct,insensitive
+ccl,cue_conflict,0.13286713286713286,0.0
+ccl,name_flip,0.3582089552238806,0.022388059701492536
+ccl,name_only_flip,0.32608695652173914,0.0
+llm_plain,cue_conflict,0.3916083916083916,0.0
+llm_plain,name_flip,0.3283582089552239,0.5074626865671642
+llm_plain,name_only_flip,0.3695652173913043,0.17391304347826086
+oracle_goe,cue_conflict,0.8671328671328671,0.0
+oracle_goe,name_flip,0.9626865671641791,0.0
+oracle_goe,name_only_flip,0.8478260869565217,0.0
